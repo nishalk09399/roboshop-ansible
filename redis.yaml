@@ -11,7 +11,7 @@
 
   - name: Install the nginx rpm from a remote repo
     ansible.builtin.dnf:
-      name: 'module enable redis:remi-6.2'
+      name: 'module enable redis, remi-6.2'
       state: present
 
   
