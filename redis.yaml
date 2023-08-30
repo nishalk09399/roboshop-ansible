@@ -3,9 +3,9 @@
   become: yes
   tasks: 
 
-  - name: installing the rpm files 
-    ansible.builtin.yum:
-      name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
-      state: installed
-
+  - name: Add repository
+    ansible.builtin.yum_repository:
+      name: rpm
+      description: RPM repo
+      baseurl: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
   
