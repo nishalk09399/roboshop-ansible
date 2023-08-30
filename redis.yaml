@@ -3,20 +3,17 @@
   become: yes
   tasks: 
 
-  # - name: Add repository
-  #   ansible.builtin.yum_repository:
-  #     name: rpm
-  #     description: RPM repo
-  #     baseurl: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+  - name: Add repository
+    ansible.builtin.yum_repository:
+      name: rpm
+      description: RPM repo
+      baseurl: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
-   - name: Install the nginx rpm from a remote repo
+  - name: Install the nginx rpm from a remote repo
      ansible.builtin.dnf:
-      name: 'https://rpms.remirepo.net/enterprise/remi-release-8.rpm'
+      name: 'module enable redis:remi-6.2'
       state: present
 
-  # - name: Install one specific version of Apache
-  #   ansible.builtin.yum:
-  #     name: module enable redis:remi-6.2
-  #     state: present
+  
 
   
