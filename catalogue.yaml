@@ -1,0 +1,16 @@
+- name: install the catalogue iteam
+  hosts: catalogue
+  become: yes
+  tasks: 
+
+  - name: setup NPM source
+    ansible.builtin.shell: "curl -sL https://rpm.nodesource.com/setup_lts.x | bash"
+
+  - name: install nodejs
+    ansible.builtin.yum: 
+      name: nodejs
+      state: installed
+
+
+
+    
