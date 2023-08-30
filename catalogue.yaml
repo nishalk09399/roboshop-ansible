@@ -11,6 +11,26 @@
       name: nodejs
       state: installed
 
+  - name: check weather the roboshot user exist or not
+    ansible.builtin.command: id roboshop
+    register: out #output is variable name
+    ignore_errors: true
+
+  - when: out.rc!= 0
+    name: create a roboshop user
+    become: yes
+    ansible.builtin.user: 
+      name: roboshop
+
+  - name: check weather the /app directory exists or not 
+    ansible.builtin.stat:
+      path: /app
+    register: directory
+
+  - name: print the directory stats
+    ansible.builtin.debug: 
+      msg: "output: "{{directory}}"
+
 
 
     
