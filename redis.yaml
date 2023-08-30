@@ -14,4 +14,9 @@
       name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
       state: present
 
+  - name: Install one specific version of Apache
+    ansible.builtin.yum:
+      name: module enable redis:remi-6.2
+      state: present
+
   
