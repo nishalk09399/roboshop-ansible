@@ -58,6 +58,32 @@
       src: catalogue.service
       dest: /etc/systemd/system/catalogue.service
 
+  - name: demon reload
+    ansible.builtin.systemd:
+      daemon_reload: true
+
+  - name: copy mongo repo to yum.repos.d
+    ansible.builtin.copy: 
+      src: mongodb.repo
+      dest: /etc/yum.repos.d/mongo.repo
+  
+  - name: install mongodb
+    ansible.builtin.yum: 
+      name: mongodb-org-shell
+      state: installed
+
+  - name: install dependencies
+    ansible.builtin.command: mongo --host mongodb.nishaldevops.online < /app/schema/catalogue.js
+
+
+  - name: Restart service catalogue
+    ansible.builtin.service:
+      name: catalogue
+      state: restarted
+      enabled: true
+      
+      
+
             
 
 
