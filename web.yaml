@@ -17,7 +17,7 @@
   - name: Delete default html content 
     ansible.builtin.file:
       state: absent
-      path: /usr/share/nginx/html/
+      path: /usr/share/nginx/html
 
   - name: downloadind the web file
     ansible.builtin.get_url:
