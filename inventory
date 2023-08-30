@@ -6,3 +6,18 @@ catalogue.nishaldevops.online
 
 [web]
 web.nishaldevops.online
+
+[redis]
+
+redis.nishaldevops.online
+
+
+[cart]
+
+cart.nishaldevops.online
+[user]
+
+user.nishaldevops.online
+
+
+

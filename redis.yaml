@@ -1,0 +1,11 @@
+- name: configuring the redis item
+  hosts: redis
+  become: yes
+  tasks: 
+
+  - name: installing the rpm files 
+    ansible.builtin.yum:
+      name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
+      state: install
+
+  
