@@ -10,7 +10,7 @@
       baseurl: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
   - name: Install the nginx rpm from a remote repo
-     ansible.builtin.dnf:
+    ansible.builtin.dnf:
       name: 'module enable redis:remi-6.2'
       state: present
 
