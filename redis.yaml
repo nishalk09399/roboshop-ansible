@@ -6,6 +6,6 @@
   - name: installing the rpm files 
     ansible.builtin.yum:
       name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
-      state: install
+      state: present
 
   
