@@ -49,7 +49,7 @@
     args: 
       chdir: /app
 
-  - name: copy payments service
+  - name: copy payment service
     ansible.builtin.copy:
       src: payment.service
       dest: /etc/systemd/system/payment.service
