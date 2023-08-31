@@ -69,7 +69,7 @@
   - name: install mysql
     ansible.builtin.yum: 
       name: mysql
-      state: install 
+      state: installed 
 
   - name: load user data
     ansible.builtin.shell: mysql -h mysql.nishaldevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql 
