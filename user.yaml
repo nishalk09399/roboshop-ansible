@@ -42,7 +42,7 @@
       url: https://roboshop-builds.s3.amazonaws.com/user.zip
       dest: /tmp
 
-  - name: unzipping the cuser files
+  - name: unzipping the user files
     ansible.builtin.unarchive:
       src: /tmp/user.zip
       dest: /app
