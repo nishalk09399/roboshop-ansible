@@ -15,9 +15,26 @@ redis.nishaldevops.online
 [cart]
 
 cart.nishaldevops.online
+
 [user]
 
 user.nishaldevops.online
+
+[mysql]
+
+mysql.nishaldevops.online
+
+[shipping]
+
+shipping.nishaldevops.online
+
+[rabbitmq]
+
+rabbitmq.nishaldevops.online
+
+[payments]
+
+payments.nishaldevops.online
 
 
 
