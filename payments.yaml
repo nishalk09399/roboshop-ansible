@@ -1,5 +1,5 @@
 - name: installing payments component
-  hosts: payments
+  hosts: payment
   become: yes
   tasks:
 
