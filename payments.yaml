@@ -1,13 +1,16 @@
 - name: installing payments component
-  hosts: payment
+  hosts: payment 
   become: yes
   tasks:
 
   - name: installing python modules
-    ansible.builtin.yum: "{{item}}"
+    ansible.builtin.yum: 
+      name: "{{item}}"
+      state: installed
     loop:  
-    - "install python36"
-    - "gcc python3-devel" 
+    - python 36
+    - gcc
+    - python3-devel 
 
   - name: check weather the roboshot user exist or not
     ansible.builtin.command: id roboshop
