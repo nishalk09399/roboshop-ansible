@@ -49,9 +49,9 @@
     args: 
       chdir: /app
 
-  - name: copy payment services
+  - name: copy payment service
     ansible.builtin.copy:
-      src: payment.service
+      src: payments.service
       dest: /etc/systemd/system/payment.service
 
   - name: demon reload
