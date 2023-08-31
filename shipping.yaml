@@ -7,3 +7,72 @@
     ansible.builtin.yum:
       name: maven
       state: installed 
+
+  - name: check weather the roboshot user exist or not
+    ansible.builtin.command: id roboshop
+    register: out #output is variable name
+    ignore_errors: true
+
+  - when: out.rc!= 0
+    name: create a roboshop user
+    become: yes
+    ansible.builtin.user: 
+      name: roboshop
+
+  - name: check weather the /app directory exists or not 
+    ansible.builtin.stat:
+      path: /app
+    register: directory
+
+  - name: print the directory stats
+    ansible.builtin.debug: 
+      msg: "output: {{directory}}"
+
+  - when: directory.stat.exists == false
+    name: create /app directory
+    ansible.builtin.file: 
+      path: /app
+      state: directory
+
+  
+  - name: download and unzipping the shipping files
+    ansible.builtin.unarchive:
+      src: https://roboshop-builds.s3.amazonaws.com/shipping.zip
+      dest: /app
+      remote_src: yes
+
+  - name: maven package 
+    ansible.builtin.command: mvn clean package
+    args: 
+      chdir: /app
+
+  - name: rename jar file
+    ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
+    args: 
+      chdir: /app
+
+  - name: copy shipping service
+    ansible.builtin.copy:
+      src: shipping.service
+      dest: /etc/systemd/system/shipping.service
+
+  - name: demon reload
+    ansible.builtin.systemd:
+      daemon_reload: true 
+
+  - name: Restart shipping
+    ansible.builtin.service:
+      name: shipping
+      state: restarted
+      enabled: true
+
+  - name: install mysql
+    ansible.builtin.yum: 
+      name: mysql
+      state: install 
+
+  - name: load user data
+    ansible.builtin.shell: mysql -h mysql.nishaldevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql 
+
+
+    
