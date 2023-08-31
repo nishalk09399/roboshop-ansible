@@ -72,8 +72,14 @@
       name: mongodb-org-shell
       state: installed
 
-  - name: install dependencies
+  - name: load user data
     ansible.builtin.command: mongo --host mongodb.nishaldevops.online < /app/schema/user.js
+
+  - name: Restart service user
+    ansible.builtin.service:
+      name: user
+      state: restarted
+      enabled: true
 
 
       
