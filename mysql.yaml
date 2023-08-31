@@ -18,7 +18,7 @@
 
   - name: start and enable the msql
     ansible.builtin.service:
-      name: mysql
+      name: mysqld
       state: started
       enabled: true    
 
